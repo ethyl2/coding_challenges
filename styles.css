@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+  background-color: #F2F1EF;
+}
+
+.form-container {
+  background-color: #81CFE0;
+  padding: 1em;
+}
+
+.response {
+  background-color: #2C3E50;
+  color: white;
+  padding: 1em;
+  margin-top: 0.5em;
+}

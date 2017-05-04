@@ -53,3 +53,15 @@ function uniqueCharsWithBooleanArray(inputString) {
   }
   return true;
 }
+
+function uniqueCharsWithSort(inputString) {
+  var myArray = inputString.split("");
+  myArray.sort();
+  // Check the array for neighboring characters which are identical
+  for (var i=0; i < myArray.length - 1; i++) {
+    if (myArray[i] == myArray[i+1]) {
+      return false;
+    }
+  }
+  return true;
+}

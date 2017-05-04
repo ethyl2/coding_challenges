@@ -38,3 +38,18 @@ function uniqueCharsNoStructures(inputString) {
   }
   return true;
 }
+
+function uniqueCharsWithBooleanArray(inputString) {
+  if (inputString.length > 256) {
+    return false;
+  }
+  var myBooleanArray = new Array(256).fill(false);
+  for (var i = 0; i < inputString.length; i++) {
+    var val = inputString.charCodeAt(i);
+    if (myBooleanArray[val]) {// Already found this char in the string
+      return false;
+    }
+    myBooleanArray[val] = true;
+  }
+  return true;
+}

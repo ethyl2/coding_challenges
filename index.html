@@ -72,6 +72,42 @@
           return true;
         }
       </pre></code>
+
+      <hr>
+      <h3>Part Three: Other Solutions</h3>
+
+      <p>In <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850" target="_blank">
+        <em>Cracking the Coding Interview: 50 Programming Questions and Solutions</em></a>,
+        the author offers another solution to the first part of this challenge.
+        If the string is an ASCII string and not a Unicode string, the first step
+        is check whether the string's length is greater than the number of ASCII
+        characters (256). If that is the case, the string must have some duplication.</p>
+
+      <p>Next, a boolean array is created with a length of 256, with all of its values
+        initially set to false. Looping through the string's characters, each character
+        is converted to its ASCII decimal value. Then the boolean array is checked
+        at that index to see whether it is true or false, depending on whether
+        that character has been seen before. If false, the array at that index is
+        changed to true for future reference. If true, the function returns false.
+        If the function finishes the loop, it returns true.
+
+      <pre><code>
+        function uniqueCharsWithBooleanArray(inputString) {
+          if (inputString.length > 256) {
+            return false;
+          }
+          var myBooleanArray = new Array(256).fill(false);
+          for (var i = 0; i < inputString.length; i++) {
+            var val = inputString.charCodeAt(i);
+            if (myBooleanArray[val]) {// Already found this char in the string
+              return false;
+            }
+            myBooleanArray[val] = true;
+          }
+          return true;
+        }
+      </pre></code>
+
   <script src="app.js"></script>
 
   </body>

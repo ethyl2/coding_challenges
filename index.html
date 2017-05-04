@@ -51,6 +51,27 @@
 
       <hr>
       <h3>Part Two: What if you cannot use additional data structures?</h3>
+
+      <p>With this additional restriction, my original solution with an array is no
+        longer going to work. Now it's time to use a nested loop to compare each
+        character with each of the other characters in the string. Notice that we
+        don't want to compare a character with itself. Alse, to be more efficient,
+        the character is compared against the ones that come after it in the string,
+        since there is no need to recompare it to characters that come before it.
+      </p>
+
+      <pre><code>
+        function uniqueCharsNoStructures(inputString) {
+          for (var i=0; i < inputString.length; i++) {
+            for (var j=i+1; j < inputString.length; j++) {
+              if (inputString[i] == inputString[j]) {
+                return false;
+              }
+            }
+          }
+          return true;
+        }
+      </pre></code>
   <script src="app.js"></script>
 
   </body>

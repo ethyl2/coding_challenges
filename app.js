@@ -27,3 +27,14 @@ function uniqueChars(inputString) {
   }
   return true;
 }
+
+function uniqueCharsNoStructures(inputString) {
+  for (var i=0; i < inputString.length; i++) {
+    for (var j=i+1; j < inputString.length; j++) {
+      if (inputString[i] == inputString[j]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}

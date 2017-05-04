@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>String Checker</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Coding Challenges</h1>
+      <hr>
+      <h2> Coding Challenge #1: Implement an algorithm to determine if a string has
+      all unique characters.</h1>
+    </header>
+
+    <section id="form-container" class="form-container">
+      <h2>Enter your string here:</h2>
+      <input type="text" class="user-string" value="" onkeypress="checkForEnter()"></input>
+      <button class="button" onclick="checkString()">Submit</button>
+    </section>
+
+    <section class="response">
+      <h2>Does it contain only unique characters?</h2>
+      <h3 class="answer"></h3>
+    </section>
+
+    <section class="explanation">
+      <p>There are many ways to approach this challenge. My first instinct was to
+        create an array, pick off one character at a time from the string,
+        and see if that character is in the array. If it's not in the array, great,
+        time to stick it in there and move on to the next character. If it continues
+        like that for all of the characters, wonderful! The string has all unique characters.
+        However, if the character being examined is already in the array, the algorithm
+        returns false.
+      </p>
+      <pre><code>
+        function checkString() {
+          var myString = document.getElementsByClassName("user-string")[0].value;
+          var myArray = [];
+          var answerDisplay = document.getElementsByClassName("answer")[0];
+
+          for (var i=0; i < myString.length; i++) {
+            if (myArray.indexOf(myString[i]) > -1) {
+              answerDisplay.textContent = "No, it doesn't contain purely unique characters.";
+              return false;
+            } else {
+              myArray.push(myString[i]);
+            }
+          }
+          answerDisplay.textContent = "Yes, it does contain purely unique characters.";
+          return true;
+        }
+      </pre></code>
+
+    <script>
+    function checkForEnter(e) {
+      if (!e) e = window.event;
+      var keyCode = e.keyCode || e.which;
+      if (keyCode == '13'){
+        checkString();
+      }
+    }
+
+    function checkString() {
+      var myString = document.getElementsByClassName("user-string")[0].value;
+      var myArray = [];
+      var answerDisplay = document.getElementsByClassName("answer")[0];
+
+      for (var i=0; i<myString.length; i++) {
+        if (myArray.indexOf(myString[i]) > -1) {
+          answerDisplay.textContent = "No, it doesn't contain purely unique characters.";
+          return false;
+        } else {
+          myArray.push(myString[i]);
+        }
+      }
+      answerDisplay.textContent = "Yes, it does contain purely unique characters.";
+      return true;
+    }
+  </script>
+
+
+  </body>
+  </html>

@@ -8,17 +8,22 @@ function checkForEnter(e) {
 
 function checkString() {
   var myString = document.getElementsByClassName("user-string")[0].value;
-  var myArray = [];
   var answerDisplay = document.getElementsByClassName("answer")[0];
+  if (uniqueChars(myString)) {
+    answerDisplay.textContent = "Yes, it does contain purely unique characters.";
+  } else {
+    answerDisplay.textContent = "No, it doesn't contain purely unique characters.";
+  }
+}
 
-  for (var i=0; i<myString.length; i++) {
-    if (myArray.indexOf(myString[i]) > -1) {
-      answerDisplay.textContent = "No, it doesn't contain purely unique characters.";
+function uniqueChars(inputString) {
+  var myArray = [];
+  for (var i=0; i < inputString.length; i++) {
+    if (myArray.indexOf(inputString[i]) > -1) {
       return false;
     } else {
-      myArray.push(myString[i]);
+      myArray.push(inputString[i]);
     }
   }
-  answerDisplay.textContent = "Yes, it does contain purely unique characters.";
   return true;
 }

@@ -36,23 +36,21 @@
         returns false.
       </p>
       <pre><code>
-        function checkString() {
-          var myString = document.getElementsByClassName("user-string")[0].value;
+        function uniqueChars(inputString) {
           var myArray = [];
-          var answerDisplay = document.getElementsByClassName("answer")[0];
-
-          for (var i=0; i < myString.length; i++) {
-            if (myArray.indexOf(myString[i]) > -1) {
-              answerDisplay.textContent = "No, it doesn't contain purely unique characters.";
+          for (var i=0; i < inputString.length; i++) {
+            if (myArray.indexOf(inputString[i]) > -1) {
               return false;
             } else {
-              myArray.push(myString[i]);
+              myArray.push(inputString[i]);
             }
           }
-          answerDisplay.textContent = "Yes, it does contain purely unique characters.";
           return true;
         }
       </pre></code>
+
+      <hr>
+      <h3>Part Two: What if you cannot use additional data structures?</h3>
   <script src="app.js"></script>
 
   </body>

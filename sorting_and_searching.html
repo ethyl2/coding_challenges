@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sorting and Searching</title>
+    <link href="styles.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <h1>Coding Challenges</h1>
+      <hr>
+      <h2> Coding Challenge #2: Locate a value's position in a sorted two-dimensional
+        matrix.</h1>
+    </header>
+
+    <p> To warm up, here is a way to locate a value's position in a one-dimensional
+      numerical matrix, AKA an array, using a binary search function.</p>
+
+    <section id="form-container" class="form-container">
+      <h2>Enter your array here:</h2>
+      <input type="text" class="user-string" value=""></input>
+      <h3 class="sorted-array"></h3>
+      <h2>Enter the value from your array that you want to find:</h2>
+      <input type="text" class="user-value" value=""></input>
+      <button class="button" onclick="getValuePosition()">Submit</button>
+    </section>
+
+    <section class="response">
+      <h2>Position of value in sorted array:</h2>
+      <h3 class="answer"></h3>
+    </section>
+
+    <pre><code>
+      function findValue(myValue, myArray) {
+        var lowPosition = 0;
+        var highPosition = myArray.length;
+        while (lowPosition <= highPosition) {
+          var midPosition = lowPosition + Math.floor((highPosition - lowPosition)/2);
+          if (myArray[midPosition] == myValue) {
+            return midPosition;
+          } else if (myArray[midPosition] < myValue) {
+            lowPosition = midPosition + 1;
+          } else {
+            highPosition = midPosition - 1;
+          }
+        }
+        return -1; // myValue isn't found in myArray
+      }
+    </pre></code>
+
+    <script src="sorting_and_searching.js"></script>
+
+  </body>
+</html>

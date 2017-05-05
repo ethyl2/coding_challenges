@@ -23,7 +23,7 @@ function prepString(myString) {
 
 function findValue(myValue, myArray) {
   var lowPosition = 0;
-  var highPosition = myArray.length;
+  var highPosition = myArray.length - 1;
   while (lowPosition <= highPosition) {
     var midPosition = lowPosition + Math.floor((highPosition - lowPosition)/2);
     if (myArray[midPosition] == myValue) {
@@ -35,4 +35,38 @@ function findValue(myValue, myArray) {
     }
   }
   return -1; // myValue isn't found in myArray
+}
+
+/* Now, the case involving a two-dimensional matrix in which the values are
+ * sorted in ascending order.
+ * Example: [[0, 1, 2],
+ *           [3, 4, 5],
+ *           [6, 7, 8]]
+ */
+function findValueInMatrix(myValue, myMatrix) {
+  var lowPosition = 0;
+  var highPosition = myMatrix.length - 1;
+  while (lowPosition <= highPosition) {
+    var midPosition = lowPosition + Math.floor((highPosition - lowPosition)/2);
+    var result = findValue(myValue, myMatrix[midPosition]);
+    if (result > -1) { // myValue is found in that row
+      return [midPosition, result];
+    } else { // myValue is not found in that row, so time to adjust high or low position
+      if (myMatrix[midPosition][0] > myValue) {
+        highPosition = midPosition - 1;
+      } else {
+        lowPosition = midPosition + 1;
+        }
+      }
+    }
+  return [-1, -1]; // myValue isn't found in myMatrix
+}
+
+var sampleMatrix = [[0,1,2], [3,4,5], [6,7,8]];
+
+function getValuePositionFromMatrix() {
+  var userValue = document.getElementsByClassName("user-value-in-matrix")[0].value;
+  var answerDisplay = document.getElementsByClassName("matrix-answer")[0];
+  var position = findValueInMatrix(userValue, sampleMatrix);
+  answerDisplay.textContent = "Row: " + position[0] + ", Column: " + position[1];
 }

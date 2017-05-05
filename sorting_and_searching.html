@@ -35,7 +35,7 @@
     <pre><code>
       function findValue(myValue, myArray) {
         var lowPosition = 0;
-        var highPosition = myArray.length;
+        var highPosition = myArray.length - 1;
         while (lowPosition <= highPosition) {
           var midPosition = lowPosition + Math.floor((highPosition - lowPosition)/2);
           if (myArray[midPosition] == myValue) {
@@ -49,6 +49,51 @@
         return -1; // myValue isn't found in myArray
       }
     </pre></code>
+    <hr>
+
+    <h2>Now, the case involving a two-dimensional matrix in which the values are
+     sorted in ascending order.</h2>
+     <p>Example:</p>
+     <pre><code>
+       [[0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8]]
+      </pre></code>
+
+      <p>This function utilizes the above findValue function to look for the value in the selected
+        inner arrays.</p>
+
+      <pre><code>
+        function findValueInMatrix(myValue, myMatrix) {
+          var lowPosition = 0;
+          var highPosition = myMatrix.length - 1;
+          while (lowPosition <= highPosition) {
+            var midPosition = lowPosition + Math.floor((highPosition - lowPosition)/2);
+            var result = findValue(myValue, myMatrix[midPosition]);
+            if (result > -1) { // myValue is found in that row
+              return [midPosition, result];
+            } else { // myValue is not found in that row, so time to adjust high or low position
+              if (myMatrix[midPosition][0] > myValue) {
+                highPosition = midPosition - 1;
+              } else {
+                lowPosition = midPosition + 1;
+                }
+              }
+            }
+          return -1; // myValue isn't found in myMatrix
+        }
+      </pre></code>
+
+      <section id="form-container-2" class="form-container">
+        <h2>Enter the value from the sample matrix that you want to find:</h2>
+        <input type="text" class="user-value-in-matrix" value=""></input>
+        <button class="button" onclick="getValuePositionFromMatrix()">Submit</button>
+      </section>
+
+      <section class="response">
+        <h2>Position of value in 2D matrix:</h2>
+        <h3 class="matrix-answer"></h3>
+      </section>
 
     <script src="sorting_and_searching.js"></script>
 
